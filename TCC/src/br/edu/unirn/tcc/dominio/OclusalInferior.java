@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.unirn.dominio;
+package br.edu.unirn.tcc.dominio;
 
-import br.edu.unirn.constants.*;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -16,12 +15,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
+import br.edu.unirn.constants.tcc.*;
+import br.edu.unirn.tcc.dao.PersistDB;
+
 /**
  *
  * @author Ã�caroCosta
  */
 @Entity
-public class LateralDireita implements Serializable {
+public class OclusalInferior implements Serializable, PersistDB {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,8 +49,6 @@ public class LateralDireita implements Serializable {
     public void setFotos(byte[] fotos) {
         this.fotos = fotos;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -68,10 +68,10 @@ public class LateralDireita implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LateralDireita)) {
+        if (!(object instanceof OclusalInferior)) {
             return false;
         }
-        LateralDireita other = (LateralDireita) object;
+        OclusalInferior other = (OclusalInferior) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -80,7 +80,7 @@ public class LateralDireita implements Serializable {
 
     @Override
     public String toString() {
-        return "classes.LateralDireita[ id=" + id + " ]";
+        return "classes.OclusalInferior[ id=" + id + " ]";
     }
     
 }

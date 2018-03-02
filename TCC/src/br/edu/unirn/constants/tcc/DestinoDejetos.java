@@ -1,4 +1,4 @@
-package br.edu.unirn.constants;
+package br.edu.unirn.constants.tcc;
 
 public enum DestinoDejetos {
 	

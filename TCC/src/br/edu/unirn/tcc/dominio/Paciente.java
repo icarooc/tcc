@@ -3,9 +3,8 @@
  * and open the template in the editor.
  */
 
-package br.edu.unirn.dominio;
+package br.edu.unirn.tcc.dominio;
 
-import br.edu.unirn.constants.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -21,12 +20,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 //import javax.persistence.SequenceGenerator;
 
+import br.edu.unirn.constants.tcc.*;
+import br.edu.unirn.tcc.dao.PersistDB;
+
 /**
  *
  * @author Ã�caroCosta
  */
 @Entity
-public class Paciente implements Serializable {
+public class Paciente implements Serializable, PersistDB {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.unirn.dominio;
+package br.edu.unirn.tcc.dominio;
 
-import br.edu.unirn.constants.*;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -16,12 +15,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
+import br.edu.unirn.constants.tcc.*;
+import br.edu.unirn.tcc.dao.PersistDB;
+
 /**
  *
  * @author Ã�caroCosta
  */
 @Entity
-public class OclusalSuperior implements Serializable {
+public class LateralDireita implements Serializable, PersistDB {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,10 +70,10 @@ public class OclusalSuperior implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OclusalSuperior)) {
+        if (!(object instanceof LateralDireita)) {
             return false;
         }
-        OclusalSuperior other = (OclusalSuperior) object;
+        LateralDireita other = (LateralDireita) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -80,7 +82,7 @@ public class OclusalSuperior implements Serializable {
 
     @Override
     public String toString() {
-        return "classes.OclusalSuperior[ id=" + id + " ]";
+        return "classes.LateralDireita[ id=" + id + " ]";
     }
     
 }
