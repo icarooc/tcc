@@ -34,7 +34,7 @@ public class Paciente implements Serializable, PersistDB {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int idade;
-    @Enumerated(EnumType.STRING)
+    /*@Enumerated(EnumType.STRING)
     private Raca raca;
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
@@ -101,9 +101,9 @@ public class Paciente implements Serializable, PersistDB {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataNascimento;
     private String dataCadastro;
-    private String diagnostico;
+    private String diagnostico;*/
 
-    public List<FrontalOclusao> getFrontalOclusao() {
+    /*public List<FrontalOclusao> getFrontalOclusao() {
         return frontalOclusao;
     }
 
@@ -437,23 +437,23 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setUf(UF uf) {
         this.uf = uf;
-    }
+    }*/
 
 
     public Paciente(){
         this.idade = 0;
-        this.raca = null;
+        /*this.raca = null;
         this.sexo = null;
-        this.fotos = null;
+        this.fotos = null;*/
     }
 
-    public List<Fotos> getFotos() {
+    /*public List<Fotos> getFotos() {
         return fotos;
     }
 
     public void setFotos(List<Fotos> fotos) {
         this.fotos = fotos;
-    }
+    }*/
 
     public int getIdade() {
         return idade;
@@ -463,7 +463,7 @@ public class Paciente implements Serializable, PersistDB {
         this.idade = idade;
     }
 
-    public Raca getRaca() {
+    /*public Raca getRaca() {
         return raca;
     }
 
@@ -477,7 +477,7 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
-    }
+    }*/
 
     public Long getId() {
         return id;
@@ -507,9 +507,9 @@ public class Paciente implements Serializable, PersistDB {
         return true;
     }
 
-    @Override
+    /*@Override
     public String toString() {
         return this.nome;
-    }
+    }*/
 
 }

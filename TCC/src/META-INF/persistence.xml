@@ -4,14 +4,14 @@
     <!--<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>-->
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     
-    <class>br.edu.unirn.dominio.Paciente</class>
-    <class>br.edu.unirn.dominio.Fotos</class>
-    <class>br.edu.unirn.dominio.FrontalOclusao</class>
-    <class>br.edu.unirn.dominio.FrontalDesoclusao</class>
-    <class>br.edu.unirn.dominio.LateralDireita</class>
-    <class>br.edu.unirn.dominio.LateralEsquerda</class>
-    <class>br.edu.unirn.dominio.OclusalSuperior</class>
-    <class>br.edu.unirn.dominio.OclusalInferior</class>
+    <class>br.edu.unirn.tcc.dominio.Paciente</class>
+    <class>br.edu.unirn.tcc.dominio.Fotos</class>
+    <class>br.edu.unirn.tcc.dominio.FrontalOclusao</class>
+    <class>br.edu.unirn.tcc.dominio.FrontalDesoclusao</class>
+    <class>br.edu.unirn.tcc.dominio.LateralDireita</class>
+    <class>br.edu.unirn.tcc.dominio.LateralEsquerda</class>
+    <class>br.edu.unirn.tcc.dominio.OclusalSuperior</class>
+    <class>br.edu.unirn.tcc.dominio.OclusalInferior</class>
     
     <properties>
     	<property name="connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />

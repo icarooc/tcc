@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	lang="pt-br">
+	
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Articlidial - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert></title>
+	<h:outputStylesheet library="css" name="style.css"/>
+	
+	<style>
+		.action{
+		  width: 10%;
+		}
+	
+	
+	</style>
+</h:head>
+<h:body>
+<p:layout fullPage="true">
+	
+	<p:layoutUnit position="north" size="100" header="Articlidial" resizable="true"  collapsible="true">        	
+		<h:form>
+		<p:growl sticky="true" id="mensagens"/>
+		
+		Módulo Administrativo - <h:commandLink value="Início" action="principal" /> - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert>
+		</h:form>
+    </p:layoutUnit>
+		
+	<p:layoutUnit position="center" footer="UNIRN - Todos os Direitos Reservados.">
+		
+		<p:menubar>
+        <p:submenu label="Administração" icon="ui-icon-document">
+            
+	        <p:menuitem value="Cadastro de Categorias" url="#" />
+	        <p:menuitem value="Catálogo de Produtos" url="#" />
+	        <p:menuitem value="Carteira de Clientes" url="#" />
+	    
+        </p:submenu>
+	    <p:menuitem value="Relatorios" url="#" />
+  
+        <f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Search"/>
+            <p:commandButton action="/loja.xhtml?faces-redirect=rue" value="Logout" icon="ui-icon-extlink" />
+        </f:facet>
+    </p:menubar>
+    
+		<ui:insert name="conteudo">
+			Conteúdo...
+		</ui:insert>		
+   	 </p:layoutUnit>
+   	 
+   	 <p:growl sticky="true" id="msgAjax"/>		
+   	 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton 
+        	value="Yes" 
+        	type="button" 
+        	styleClass="ui-confirmdialog-yes" 
+        	icon="ui-icon-check"
+        	action="index.xhtml?faces-redirect=true" />
+        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>	
+   	 		
+</p:layout>
+	
+</h:body>
+
+</html>
