@@ -6,6 +6,7 @@
 package br.edu.unirn.tcc.dominio;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -37,10 +38,10 @@ public class Paciente implements Serializable, PersistDB {
     /*@Enumerated(EnumType.STRING)
     private Raca raca;
     @Enumerated(EnumType.STRING)
-    private Sexo sexo;
+    private Sexo sexo;*/
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="pacienteid")
-    private List<Fotos> fotos;
+    private List<Fotos> fotos;/*
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="pacienteid")
     private List<FrontalOclusao> frontalOclusao;
@@ -443,17 +444,17 @@ public class Paciente implements Serializable, PersistDB {
     public Paciente(){
         this.idade = 0;
         /*this.raca = null;
-        this.sexo = null;
-        this.fotos = null;*/
+        this.sexo = null;*/
+        this.fotos = new ArrayList<Fotos>();
     }
 
-    /*public List<Fotos> getFotos() {
+    public List<Fotos> getFotos() {
         return fotos;
     }
 
     public void setFotos(List<Fotos> fotos) {
         this.fotos = fotos;
-    }*/
+    }
 
     public int getIdade() {
         return idade;

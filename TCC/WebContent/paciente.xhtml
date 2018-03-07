@@ -26,6 +26,9 @@
 							validatorMessage="Denominação deve ter no máximo 30 caracteres">
 							<f:validateLength maximum="30"/>
 						</p:inputText>
+  						<p:fileUpload fileUploadListener="#{pacienteMBean.upload}" />
+  						<h:inputHidden/>
+  						<p:outputLabel value="teste	"/>
 					</p:panelGrid>
 					<p:commandButton value="Salvar" 
 						action="#{pacienteMBean.salvar}" 

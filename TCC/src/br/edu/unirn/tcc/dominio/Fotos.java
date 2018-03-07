@@ -39,7 +39,7 @@ public class Fotos implements Serializable, PersistDB {
     private Long id;
     @Enumerated(EnumType.STRING)
     private TipoFoto tipoFoto;
-    @Lob
+    //@Lob
     @Basic(fetch=FetchType.LAZY)
     private byte[] fotos;
 
