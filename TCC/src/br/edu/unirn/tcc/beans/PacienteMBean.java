@@ -21,10 +21,11 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
-import br.edu.unirn.constants.tcc.TipoFoto;
+import br.edu.unirn.tcc.constants.TipoFoto;
 import br.edu.unirn.tcc.dao.PacienteDAO;
 import br.edu.unirn.tcc.dominio.Fotos;
 import br.edu.unirn.tcc.dominio.Paciente;
+import br.edu.unirn.tcc.negocio.Processador;
 
 @ManagedBean
 @SessionScoped
@@ -33,22 +34,33 @@ public class PacienteMBean {
 	TabView tabView;
 	
 	private StreamedContent fotoSalva;
+	private StreamedContent fotoProcessada;
+	private StreamedContent fotoDownload;
 	
 	private Paciente paciente = new Paciente();
 	
-	@PostConstruct
-	public void iniciar(){
+	public void iniciarProcessamento(){
 		if (paciente != null && (paciente.getId() != null && paciente.getId() != 0)){
 			try{
 				
 				ImageIcon ii = new ImageIcon(paciente.getFotos().get(0).getFotos());
 				
-				BufferedImage bufferedImg = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+				BufferedImage bufferedImg = new BufferedImage(600, 600, BufferedImage.TYPE_INT_RGB);
             	Graphics2D g2 = bufferedImg.createGraphics();
-            	g2.drawImage(ii.getImage(), 0, 0, Math.abs(500), Math.abs(500), null);
+            	g2.drawImage(ii.getImage(), 0, 0, Math.abs(600), Math.abs(600), null);
+            	
             	ByteArrayOutputStream os = new ByteArrayOutputStream();
             	ImageIO.write(bufferedImg, "png", os);
             	fotoSalva = new DefaultStreamedContent(new ByteArrayInputStream(os.toByteArray()), "image/png");
+            	
+            	Processador processador = new Processador(bufferedImg);
+            	processador.processarTudo();
+            	
+            	ByteArrayOutputStream osProcessada = new ByteArrayOutputStream();
+            	ImageIO.write(processador.getSaidaGeral(), "png", osProcessada);
+            	fotoProcessada = new DefaultStreamedContent(new ByteArrayInputStream(osProcessada.toByteArray()), "image/png");
+            	
+            	this.prepararDownload(processador.getSaidaGeral());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -82,11 +94,6 @@ public class PacienteMBean {
 	    foto.setFotos(uploadedFile.getContents());
 	    paciente.getFotos().add(foto);
 	    
-	    /*File file = new File("/fotos/", uploadedFile.getFileName());
-	    OutputStream out = new FileOutputStream(file);
-	    out.write(uploadedFile.getContents());
-	    out.close();*/
-	    
 	    FacesContext.getCurrentInstance().addMessage(
 	               null, new FacesMessage("Upload completo", 
 	               "O arquivo " + uploadedFile.getFileName() + " foi salvo!"));
@@ -94,8 +101,17 @@ public class PacienteMBean {
 	
 	public String selecionar(Paciente paciente){
 		this.paciente = paciente;
-		this.iniciar();
+		this.iniciarProcessamento();
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Processamento concluído com sucesso!"));
 		return "/pacienteFoto.xhtml";
+	}
+	
+	private void prepararDownload(BufferedImage baixar) throws IOException{
+		ByteArrayOutputStream osDown = new ByteArrayOutputStream();
+    	ImageIO.write(baixar, "png", osDown);
+    	ByteArrayInputStream saida = new ByteArrayInputStream(osDown.toByteArray());
+        this.fotoDownload = new DefaultStreamedContent(saida, "image/png", "downloaded_processada.jpg");
+        System.out.println("chegou ao fim!!!");
 	}
 	
 	public Paciente getPaciente() {
@@ -116,6 +132,14 @@ public class PacienteMBean {
 
 	public StreamedContent getFotoSalva() {
 		return fotoSalva;
+	}
+
+	public StreamedContent getFotoProcessada() {
+		return fotoProcessada;
+	}
+
+	public StreamedContent getFotoDownload() {
+		return fotoDownload;
 	}
 	
 }

@@ -24,7 +24,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.swing.ImageIcon;
 
-import br.edu.unirn.constants.tcc.TipoFoto;
+import br.edu.unirn.tcc.constants.TipoFoto;
 import br.edu.unirn.tcc.dao.PersistDB;
 
 /**

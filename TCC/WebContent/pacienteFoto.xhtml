@@ -15,7 +15,22 @@
 	
 	<ui:define name="conteudo">
 		<h3>Foto</h3>
-		<p:graphicImage value="#{pacienteMBean.fotoSalva}" />
+		<h:form>
+		<table>
+			<tr>
+				<td>
+					<p:graphicImage value="#{pacienteMBean.fotoSalva}" width="300" height="300"/>
+				</td>
+				<td>
+					<p:graphicImage value="#{pacienteMBean.fotoProcessada}" width="300" height="300"/>
+					<br/>
+					<p:commandButton value="Download" ajax="false" icon="ui-icon-arrowthick-1-s">
+        				<p:fileDownload value="#{pacienteMBean.fotoDownload}" />
+    				</p:commandButton>
+				</td>
+			</tr>
+		</table>
+		</h:form>
 	</ui:define>
 	
 </ui:composition>

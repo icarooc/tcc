@@ -1,4 +1,4 @@
-package br.edu.unirn.constants.tcc;
+package br.edu.unirn.tcc.constants;
 
 public enum GruposComunitarios {
 	

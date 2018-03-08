@@ -15,7 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-import br.edu.unirn.constants.tcc.*;
+import br.edu.unirn.tcc.constants.*;
 import br.edu.unirn.tcc.dao.PersistDB;
 
 /**

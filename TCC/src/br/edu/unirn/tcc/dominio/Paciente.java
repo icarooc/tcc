@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 //import javax.persistence.SequenceGenerator;
 
-import br.edu.unirn.constants.tcc.*;
+import br.edu.unirn.tcc.constants.*;
 import br.edu.unirn.tcc.dao.PersistDB;
 
 /**
