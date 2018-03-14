@@ -705,7 +705,7 @@ public class Processador {
         return desvio;
     }
     
-    public int tratarImagem() {
+    private int tratarImagem() {
         this.conncomp2(4);
         int qtdObj = maior(rotulos);
         int tg = qtdObj;
@@ -727,47 +727,7 @@ public class Processador {
         return tg;
     }
     
-    public double[] polyfit (int[][] cts){
-        int[] x = new int [cts[0].length];
-        int[] y = new int [cts[1].length];
-        for (int i=0; i< x.length; i++){
-            x[i] = cts[0][i];
-            y[i] = cts[1][i];
-        }
-        double [][] aux = new double[3][3];
-        double [][] aux1 = new double[3][1];
-        double c1=0.0,c2=0.0,c3=0.0,c4=0.0,c5=0.0,c6=0.0,c7=0.0;
-        for (int i = 0; i < y.length; i++) {
-            c1 += x[i];
-            c2 += Math.pow(x[i], 2.0);
-            c3 += Math.pow(x[i], 3.0);
-            c4 += Math.pow(x[i], 4.0);
-            c5 += y[i];
-            c6 += y[i]*x[i];
-            c7 += y[i]*Math.pow(x[i], 2.0);
-        }
-        aux[0][0] = x.length;
-        aux[0][1] = c1;
-        aux[0][2] = c2;
-        aux[1][0] = c1;
-        aux[1][1] = c2;
-        aux[1][2] = c3;
-        aux[2][0] = c2;
-        aux[2][1] = c3;
-        aux[2][2] = c4;
-        aux1[0][0] = c5;
-        aux1[1][0] = c6;
-        aux1[2][0] = c7;
-        SimpleMatrix coefX = new SimpleMatrix(aux);
-        SimpleMatrix coefY = new SimpleMatrix(aux1);
-        SimpleMatrix coefs = coefX.solve(coefY);
-        //coefs.print();
-        double[] saida = {coefs.get(0,0),coefs.get(1,0),coefs.get(2,0)};
-        System.out.println(coefs.get(0,0)+" "+coefs.get(1,0)+" "+coefs.get(2,0));
-        return saida;
-    };
-    
-    public void pintarSaida(){
+    private void pintarSaida(){
         for (int i = 0; i < imagem.getHeight(); i++){
             for (int j = 0; j < imagem.getWidth(); j++) {
                 if (binary.getRGB(j, i)==Color.WHITE.getRGB()){

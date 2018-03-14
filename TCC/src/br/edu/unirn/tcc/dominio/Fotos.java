@@ -36,7 +36,7 @@ public class Fotos implements Serializable, PersistDB {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     @Enumerated(EnumType.STRING)
     private TipoFoto tipoFoto;
     //@Lob
@@ -89,11 +89,11 @@ public class Fotos implements Serializable, PersistDB {
         this.fotos = fotos;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

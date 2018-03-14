@@ -17,23 +17,93 @@
 		<p:tabView  id="view">
 			<p:tab title="Cadastro" id="tabela">
 				<h:form id="formulario">
-					<p:panelGrid columns="2">
-						<p:outputLabel value="Idade" for="idade"/>
-						<p:inputText 
-							id="idade"
-							value="#{pacienteMBean.paciente.idade}" 
-							required="true"
-							validatorMessage="Denominação deve ter no máximo 30 caracteres">
-							<f:validateLength maximum="30"/>
-						</p:inputText>
-  						<p:fileUpload fileUploadListener="#{pacienteMBean.upload}" />
+					
+					<p:panelGrid style="margin: 0 auto">
+					
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Nome" for="nome"/>
+							</p:column>
+							<p:column>
+								<p:inputText value="#{pacienteMBean.paciente.nome}" id="nome"/>
+							</p:column>
+						</p:row>
+					
+						<p:row>
+							<p:column>
+								<p:outputLabel value="Idade" for="idade"/>
+							</p:column>
+							<p:column>
+								<p:inputText 
+									id="idade"
+									value="#{pacienteMBean.paciente.idade}" 
+									required="true"
+									validatorMessage="Denominação deve ter no máximo 30 caracteres"
+									type="number">
+									<f:validateLength maximum="30"/>
+								</p:inputText>
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column>
+								<p:outputLabel for="brazilian" value="Nascimento:" />
+							</p:column>
+							<p:column>
+		        				<p:calendar id="brazilian" value="#{pacienteMBean.paciente.dataNascimento}" locale="pt" navigator="true" pattern="dd/MM/yyyy" />
+							</p:column>
+						</p:row>
+        				
+        				<p:row>
+        					<p:column>
+        						<p:outputLabel for="sexo" value="Sexo: " />
+        					</p:column>
+        					<p:column>
+        						<p:selectOneRadio id="sexo" value="#{pacienteMBean.paciente.sexo}" layout="grid" columns="2">
+    	        					<f:selectItems value="#{pacienteMBean.sexos}" var="s" itemLabel="#{s.tipoSexo}" itemValue="#{s}"/>
+	        					</p:selectOneRadio>
+        					</p:column>
+        				</p:row>
+						
+						<p:row>
+							<p:column>
+								<h:outputLabel value="Naturalidade: " for="uf"/>
+							</p:column>
+							<p:column style="size:100%">
+								<p:selectOneMenu id="uf" value="#{pacienteMBean.paciente.uf}">
+									<f:selectItem itemLabel="Selecione" itemValue=""/>
+									<f:selectItems value="#{pacienteMBean.ufs}" var="u" itemLabel="#{u.UF}" itemValue="#{u}"/>
+								</p:selectOneMenu>
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column colspan="2">
+								<p:fileUpload fileUploadListener="#{pacienteMBean.upload}" />
+							</p:column>
+						</p:row>
+						
+						<p:row>
+							<p:column colspan="2" style="text-align:center;">
+								<p:commandButton value="Salvar" 
+									action="#{pacienteMBean.salvar}" 
+									ajax="false" 
+									icon="ui-icon-disk"/>
+							</p:column>
+						</p:row>
+						
   						<h:inputHidden/>
-  						<p:outputLabel value="teste	"/>
 					</p:panelGrid>
-					<p:commandButton value="Salvar" 
-						action="#{pacienteMBean.salvar}" 
-						ajax="false" 
-						icon="ui-icon-disk"/>
+					
+						
+					<p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+						<p:panelGrid id="display" columns="2" columnClasses="label,value">
+							<h:outputText value="Nascimento:" />
+            				<h:outputText value="#{pacienteMBean.paciente.dataNascimento}">
+                				<f:convertDateTime pattern="dd/MM/yyyy" />
+            				</h:outputText>
+						</p:panelGrid>
+					</p:dialog>
 				</h:form>
 			</p:tab>
 		</p:tabView>

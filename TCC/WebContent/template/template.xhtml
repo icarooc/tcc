@@ -9,50 +9,50 @@
 	
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Articlidial - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert></title>
+	<title>Articlidial - <ui:insert name="titulo">Título</ui:insert></title>
 	<h:outputStylesheet library="css" name="style.css"/>
 	
 	<style>
 		.action{
 		  width: 10%;
 		}
-	
-	
+		
+		.ui-layout-unit-footer-title{
+			text-align:right;
+		}
 	</style>
 </h:head>
+
 <h:body>
 <p:layout fullPage="true">
 	
-	<p:layoutUnit position="north" size="100" header="Articlidial" resizable="true"  collapsible="true">        	
-		<h:form>
-		<p:growl sticky="true" id="mensagens"/>
-		
-		Módulo Administrativo - <h:commandLink value="Início" action="principal" /> - <ui:insert name="titulo">Subistituir o Título Aqui</ui:insert>
-		</h:form>
+	<p:layoutUnit position="north" size="50" resizable="false"  style="text-align: center; background: green">
+		<f:facet name="header">
+			<h:outputLabel style="color: black">Articlidial</h:outputLabel>
+		</f:facet>        	
     </p:layoutUnit>
 		
-	<p:layoutUnit position="center" footer="UNIRN - Todos os Direitos Reservados.">
+	<p:layoutUnit position="center">
+		
+		<h:form>
+			<p:growl sticky="true" id="mensagens"/>
+		</h:form>
 		
 		<p:menubar>
-        <p:submenu label="Administração" icon="ui-icon-document">
-            
-	        <p:menuitem value="Cadastro de Categorias" url="#" />
-	        <p:menuitem value="Catálogo de Produtos" url="#" />
-	        <p:menuitem value="Carteira de Clientes" url="#" />
-	    
-        </p:submenu>
-	    <p:menuitem value="Relatorios" url="#" />
-  
-        <f:facet name="options">
-            <p:inputText style="margin-right:10px" placeholder="Search"/>
-            <p:commandButton action="/loja.xhtml?faces-redirect=rue" value="Logout" icon="ui-icon-extlink" />
-        </f:facet>
-    </p:menubar>
+	    	<p:menuitem value="Início" url="inde.xhtml"/>
+	    	<p:menuitem value="Gerenciar pacientes" url="paciente.xhtml"/>
+    	</p:menubar>
     
 		<ui:insert name="conteudo">
-			Conteúdo...
-		</ui:insert>		
-   	 </p:layoutUnit>
+			conteudo
+		</ui:insert>
+		
+		<f:facet name="footer" >
+			<div style="align: center">
+				<h:outputLabel style="color: black">UniRN - 2018</h:outputLabel>
+			</div>
+		</f:facet>
+   	</p:layoutUnit>
    	 
    	 <p:growl sticky="true" id="msgAjax"/>		
    	 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">

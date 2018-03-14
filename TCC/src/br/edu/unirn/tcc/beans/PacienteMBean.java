@@ -5,9 +5,10 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,7 +22,9 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 
+import br.edu.unirn.tcc.constants.Sexo;
 import br.edu.unirn.tcc.constants.TipoFoto;
+import br.edu.unirn.tcc.constants.UF;
 import br.edu.unirn.tcc.dao.PacienteDAO;
 import br.edu.unirn.tcc.dominio.Fotos;
 import br.edu.unirn.tcc.dominio.Paciente;
@@ -35,8 +38,7 @@ public class PacienteMBean {
 	
 	private StreamedContent fotoSalva;
 	private StreamedContent fotoProcessada;
-	private StreamedContent fotoDownload;
-	
+	private StreamedContent fotoDownload;	
 	private Paciente paciente = new Paciente();
 	
 	public void iniciarProcessamento(){
@@ -114,6 +116,22 @@ public class PacienteMBean {
         System.out.println("chegou ao fim!!!");
 	}
 	
+	public List<Sexo> getSexos(){
+		List<Sexo> sexos = new ArrayList<Sexo>();
+		for (Sexo s : Sexo.values()){
+			sexos.add(s);
+		}
+		return sexos;
+	}
+	
+	public List<UF> getUfs(){
+		List<UF> ufs = new ArrayList<UF>();
+		for (UF u : UF.values()){
+			ufs.add(u);
+		}
+		return ufs;
+	}
+	
 	public Paciente getPaciente() {
 		return paciente;
 	}
@@ -141,5 +159,5 @@ public class PacienteMBean {
 	public StreamedContent getFotoDownload() {
 		return fotoDownload;
 	}
-	
+
 }

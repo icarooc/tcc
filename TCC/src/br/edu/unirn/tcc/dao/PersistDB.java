@@ -2,8 +2,8 @@ package br.edu.unirn.tcc.dao;
 
 public interface PersistDB {
 
-	public Long getId();
+	public Integer getId();
 	
-	public void setId(Long id);
+	public void setId(Integer id);
 }
 

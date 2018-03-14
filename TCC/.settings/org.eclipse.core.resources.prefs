@@ -1,9 +1,3 @@
 eclipse.preferences.version=1
 encoding//src/br/edu/unirn/tcc/dominio/Fotos.java=UTF-8
-encoding//src/br/edu/unirn/tcc/dominio/FrontalDesoclusao.java=UTF-8
-encoding//src/br/edu/unirn/tcc/dominio/FrontalOclusao.java=UTF-8
-encoding//src/br/edu/unirn/tcc/dominio/LateralDireita.java=UTF-8
-encoding//src/br/edu/unirn/tcc/dominio/LateralEsquerda.java=UTF-8
-encoding//src/br/edu/unirn/tcc/dominio/OclusalInferior.java=UTF-8
-encoding//src/br/edu/unirn/tcc/dominio/OclusalSuperior.java=UTF-8
 encoding//src/br/edu/unirn/tcc/dominio/Paciente.java=UTF-8

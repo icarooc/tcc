@@ -33,36 +33,21 @@ public class Paciente implements Serializable, PersistDB {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     private int idade;
-    /*@Enumerated(EnumType.STRING)
-    private Raca raca;
     @Enumerated(EnumType.STRING)
-    private Sexo sexo;*/
+    private Sexo sexo;
     @OneToMany(cascade={CascadeType.ALL})
     @JoinColumn(name="pacienteid")
-    private List<Fotos> fotos;/*
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="pacienteid")
-    private List<FrontalOclusao> frontalOclusao;
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="pacienteid")
-    private List<FrontalDesoclusao> frontalDesoclusao;
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="pacienteid")
-    private List<LateralDireita> lateralDireita;
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="pacienteid")
-    private List<LateralEsquerda> lateralEsquerda;
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="pacienteid")
-    private List<OclusalSuperior> oclusalSuperior;
-    @OneToMany(cascade={CascadeType.ALL})
-    @JoinColumn(name="pacienteid")
-    private List<OclusalInferior> oclusalInferior;
+    private List<Fotos> fotos;
     @Enumerated(EnumType.STRING)
     private UF uf;
-    private String ubs;
+    private String nome;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataNascimento;
+    /*@Enumerated(EnumType.STRING)
+    private Raca raca;*/
+    /*private String ubs;
     private String ESFResponsavel;
     private String endereco;
     private String bairro;
@@ -91,67 +76,18 @@ public class Paciente implements Serializable, PersistDB {
     private String gruposComunitarios;
     private boolean atividadesPDomiciliares;
     private boolean itensDental;
-    private int classificacaoRisco;
-    private String nome;
-    private boolean alfabetizado;
+    private int classificacaoRisco;*/
+    /*private boolean alfabetizado;
     private boolean trabalhoAtual;
     private String ocupacao;
     private double rendaDeclarada;
     private String condicaoDoenca;
-    private boolean frequentaEscola;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dataNascimento;
-    private String dataCadastro;
+    private boolean frequentaEscola;*/
+    /*private String dataCadastro;
     private String diagnostico;*/
 
-    /*public List<FrontalOclusao> getFrontalOclusao() {
-        return frontalOclusao;
-    }
+    /*
 
-    public void setFrontalOclusao(List<FrontalOclusao> frontalOclusao) {
-        this.frontalOclusao = frontalOclusao;
-    }
-
-    public List<FrontalDesoclusao> getFrontalDesoclusao() {
-        return frontalDesoclusao;
-    }
-
-    public void setFrontalDesoclusao(List<FrontalDesoclusao> frontalDesoclusao) {
-        this.frontalDesoclusao = frontalDesoclusao;
-    }
-
-    public List<LateralDireita> getLateralDireita() {
-        return lateralDireita;
-    }
-
-    public void setLateralDireita(List<LateralDireita> lateralDireita) {
-        this.lateralDireita = lateralDireita;
-    }
-
-    public List<LateralEsquerda> getLateralEsquerda() {
-        return lateralEsquerda;
-    }
-
-    public void setLateralEsquerda(List<LateralEsquerda> lateralEsquerda) {
-        this.lateralEsquerda = lateralEsquerda;
-    }
-
-    public List<OclusalSuperior> getOclusalSuperior() {
-        return oclusalSuperior;
-    }
-
-    public void setOclusalSuperior(List<OclusalSuperior> oclusalSuperior) {
-        this.oclusalSuperior = oclusalSuperior;
-    }
-
-    public List<OclusalInferior> getOclusalInferior() {
-        return oclusalInferior;
-    }
-
-    public void setOclusalInferior(List<OclusalInferior> oclusalInferior) {
-        this.oclusalInferior = oclusalInferior;
-    }
-    
     public String getDataCadastro() {
         return dataCadastro;
     }
@@ -246,7 +182,7 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setCondicaoDoenca(String condicaoDoenca) {
         this.condicaoDoenca = condicaoDoenca;
-    }
+    }*/
 
     public Date getDataNascimento() {
         return dataNascimento;
@@ -256,7 +192,7 @@ public class Paciente implements Serializable, PersistDB {
         this.dataNascimento = dataNascimento;
     }
 
-    public DestinoDejetos getDestinoDejetos() {
+    /*public DestinoDejetos getDestinoDejetos() {
         return destinoDejetos;
     }
 
@@ -350,7 +286,7 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setMunicipio(String municipio) {
         this.municipio = municipio;
-    }
+    }*/
 
     public String getNome() {
         return nome;
@@ -360,7 +296,7 @@ public class Paciente implements Serializable, PersistDB {
         this.nome = nome;
     }
 
-    public int getNumeroComodos() {
+    /*public int getNumeroComodos() {
         return numeroComodos;
     }
 
@@ -430,7 +366,7 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setUbs(String ubs) {
         this.ubs = ubs;
-    }
+    }*/
 
     public UF getUf() {
         return uf;
@@ -438,7 +374,7 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setUf(UF uf) {
         this.uf = uf;
-    }*/
+    }
 
 
     public Paciente(){
@@ -470,7 +406,7 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setRaca(Raca raca) {
         this.raca = raca;
-    }
+    }*/
 
     public Sexo getSexo() {
         return sexo;
@@ -478,13 +414,13 @@ public class Paciente implements Serializable, PersistDB {
 
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
-    }*/
+    }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -508,9 +444,9 @@ public class Paciente implements Serializable, PersistDB {
         return true;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         return this.nome;
-    }*/
+    }
 
 }
