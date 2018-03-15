@@ -15,18 +15,44 @@
      <h1>Bem vindo!</h1>
     	<br/>
       	<br/>
-      <p:tabView>	
-      	<p:tab title="Consulta" id="formulario">
 				<h:form>	
 					<p:dataTable 
 						id="tabConsuta"
 						value="#{pacienteMBean.listaCompleta}" 
-						var="paciente">
+						var="paciente" paginator="true" 
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} 
+											{NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						paginatorPosition="bottom" rows="10">
+						
+						<f:facet name="header">
+							Consulta de Pacientes
+						</f:facet>
+						
+						<p:column headerText="Nome">
+							<h:outputText value="#{paciente.nome}"/>
+						</p:column>
+						<p:column headerText="Nascimento">
+							<h:outputText value="#{paciente.dataNascimento}">
+								<f:convertDateTime pattern="dd***MM***yyyy"/>
+							</h:outputText>
+						</p:column>
 						<p:column>
 							<f:facet name="header">
 								<h:outputText value="Idade" />
 							</f:facet>				
 							<h:outputText value="#{paciente.idade}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Sexo" />
+							</f:facet>				
+							<h:outputText value="#{paciente.sexo}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="UF" />
+							</f:facet>				
+							<h:outputText value="#{paciente.uf}" />
 						</p:column>
 						<p:column>
 							<f:facet name="header">
@@ -39,8 +65,6 @@
 						</p:column>
 					</p:dataTable>
 				</h:form> 
-			</p:tab>
-		</p:tabView>
     </ui:define>
       
 </ui:composition>
