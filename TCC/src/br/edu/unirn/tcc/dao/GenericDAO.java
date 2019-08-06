@@ -90,6 +90,16 @@ public abstract class GenericDAO <T extends PersistDB>{
 		return retorno;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<T> findAllOrdenado(String coluna, String sentido){
+		String tabela = getClassType().getSimpleName();
+		String jpql = "from " + tabela + " order by " + coluna + " " + sentido;
+		EntityManager em = getEm();
+		Query q = em.createQuery(jpql);
+		List<T> retorno = q.getResultList();
+		return retorno;
+	}
+	
 	
 	public abstract Class<T> getClassType();
 }

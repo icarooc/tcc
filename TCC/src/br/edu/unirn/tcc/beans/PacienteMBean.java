@@ -72,7 +72,7 @@ public class PacienteMBean {
 	public List<Paciente> getListaCompleta(){
 		PacienteDAO dao = new PacienteDAO();
 		try{
-			return dao.findAll();
+			return dao.findAllOrdenado("nome", "asc");
 		}finally{
 			dao.close();
 		}	
@@ -80,7 +80,11 @@ public class PacienteMBean {
 
 	public String salvar() throws IOException{
 		PacienteDAO pDao = new PacienteDAO();
-		pDao.create(paciente);
+		if (paciente.getId() == 0){
+			pDao.create(paciente);
+		} else {
+			pDao.update(paciente);
+		}
 		System.out.println(paciente.getId());
 		//FacesContext.getCurrentInstance().getExternalContext().redirect("/index.xhtml");
 		paciente = new Paciente();
@@ -106,6 +110,22 @@ public class PacienteMBean {
 		this.iniciarProcessamento();
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Processamento concluído com sucesso!"));
 		return "/pacienteFoto.xhtml";
+	}
+	
+	public String exclusaoRapida(Paciente paciente){
+		PacienteDAO dao = new PacienteDAO();
+		try{
+			dao.delete(paciente);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Paciente deletado com sucesso"));
+		}finally{
+			dao.close();  
+		}
+		return null;
+	}
+	
+	public String editar(Paciente paciente){
+		this.paciente = paciente;
+		return "/paciente.xhtml";
 	}
 	
 	private void prepararDownload(BufferedImage baixar) throws IOException{

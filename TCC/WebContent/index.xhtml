@@ -17,7 +17,7 @@
       	<br/>
 				<h:form>	
 					<p:dataTable 
-						id="tabConsuta"
+						id="tabConsulta"
 						value="#{pacienteMBean.listaCompleta}" 
 						var="paciente" paginator="true" 
 						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} 
@@ -54,14 +54,36 @@
 							</f:facet>				
 							<h:outputText value="#{paciente.uf}" />
 						</p:column>
-						<p:column>
+						<p:column width="5%">
 							<f:facet name="header">
-								<h:outputText value="Editar" />
+								<h:outputText value="Fotos" />
 							</f:facet>				
 							<p:commandButton 
 								action="#{pacienteMBean.selecionar(paciente)}" 
 								icon="ui-icon-zoomout" 
 								ajax="false"/>
+						</p:column>
+						<p:column width="5%">
+							<f:facet name="header">
+							<h:outputText value="Editar" />
+							</f:facet>				
+							<p:commandButton 
+								action="#{pacienteMBean.editar(paciente)}" 
+								icon="ui-icon-pencil" 
+								ajax="false"/>
+						</p:column>
+						<p:column width="5%">
+							<f:facet name="header">
+								<h:outputText value="Excluir" />
+							</f:facet>				
+							<p:commandButton 
+								action="#{pacienteMBean.exclusaoRapida(paciente)}" 
+								icon="ui-icon-trash"
+								update="tabConsulta, msgAjax">
+								 <p:confirm header="Confirmação" 
+								 			message="Deseja realmente deletar este paciente?" 
+								 			icon="ui-icon-alert"/>
+							</p:commandButton>
 						</p:column>
 					</p:dataTable>
 				</h:form> 

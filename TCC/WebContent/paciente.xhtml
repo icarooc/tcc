@@ -77,7 +77,7 @@
 							</p:column>
 						</p:row>
 						
-						<p:row>
+						<p:row rendered="#{pacienteMBean.paciente.id == 0}">
 							<p:column colspan="2">
 								<p:fileUpload fileUploadListener="#{pacienteMBean.upload}" />
 							</p:column>

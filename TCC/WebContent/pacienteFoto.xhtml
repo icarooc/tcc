@@ -14,16 +14,20 @@
 	</ui:define>
 	
 	<ui:define name="conteudo">
-		<h3>Foto</h3>
+		<h3>Processamento</h3>
 		<h:form>
-		<table>
+		<table style="margin: 0 auto">
 			<tr>
 				<td>
-					<p:graphicImage value="#{pacienteMBean.fotoSalva}" width="300" height="300"/>
+					<p:graphicImage value="#{pacienteMBean.fotoSalva}" width="450" height="450"/>
 				</td>
 				<td>
-					<p:graphicImage value="#{pacienteMBean.fotoProcessada}" width="300" height="300"/>
+					<p:graphicImage value="#{pacienteMBean.fotoProcessada}" width="450" height="450"/>
 					<br/>
+				</td>
+			</tr>
+			<tr align="right">
+				<td colspan="2">
 					<p:commandButton value="Download" ajax="false" icon="ui-icon-arrowthick-1-s">
         				<p:fileDownload value="#{pacienteMBean.fotoDownload}" />
     				</p:commandButton>
